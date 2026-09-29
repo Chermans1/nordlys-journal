@@ -1,5 +1,12 @@
 import './style.css'
 import heroImage from './assets/lofoten-hero.jpg'
+import lofotenImage from './assets/lofoten.jpg'
+import jotunheimenImage from './assets/jotunheimen.jpg'
+import bergenImage from './assets/bergen.jpg'
+import senjaImage from './assets/senja.jpg'
+import rondaneImage from './assets/rondane.jpg'
+import tromsoImage from './assets/tromso.jpg'
+import journeyImage from './assets/journey.jpg'
 import { addDays, compareAsc, differenceInCalendarDays, format, isValid, parseISO } from 'date-fns'
 import { nb } from 'date-fns/locale'
 
@@ -11,6 +18,15 @@ const icons = {
   pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>',
   plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>',
+}
+
+const destinationImages = {
+  lofoten: lofotenImage,
+  jotunheimen: jotunheimenImage,
+  bergen: bergenImage,
+  senja: senjaImage,
+  rondane: rondaneImage,
+  tromso: tromsoImage,
 }
 
 const destinations = [
@@ -47,7 +63,7 @@ const countdown = (date) => {
 function destinationCard(place) {
   const favorite = saved.favorites.includes(place.id)
   return `<article class="destination-card ${place.color}">
-    <div class="card-art" aria-hidden="true"><span class="art-orbit"></span><span class="art-hill art-hill-back"></span><span class="art-hill art-hill-front"></span></div>
+    <div class="card-art"><img src="${destinationImages[place.id]}" alt="" loading="lazy" decoding="async"></div>
     <div class="card-top"><span>${place.number} / 06</span><button class="favorite ${favorite ? 'is-favorite' : ''}" data-favorite="${place.id}" aria-label="${favorite ? 'Fjern' : 'Lagre'} ${place.name} som favoritt" aria-pressed="${favorite}">${icons.heart}</button></div>
     <div class="card-content"><span class="card-tag">${place.tag}</span><h3>${place.name}</h3><p>${place.description}</p><div class="card-bottom"><span>${icons.pin}${place.region}</span><button data-plan="${place.id}" aria-label="Planlegg tur til ${place.name}">${icons.arrowUp}</button></div></div>
   </article>`
@@ -128,7 +144,7 @@ document.querySelector('#app').innerHTML = `
     </div></section>
     <section class="quote-section"><div class="container quote-inner"><span class="quote-spark">✳</span><div><span class="eyebrow light">LITT INSPIRASJON PÅ VEIEN</span><blockquote>«Det finnes alltid en ny vei å ta, et nytt sted å se og en historie å ta med hjem.»</blockquote></div><span class="quote-end">NORDLYS / 2026</span></div></section>
     <section class="planner section-pad" id="mine-turer"><div class="container"><div class="section-heading planner-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>DIN PERSONLIGE REISELISTE</div><h2>Det neste <em>eventyret</em><span class="heading-star">✳</span></h2></div><p>Alle gode historier starter med en plan. Legg til turene du gleder deg til, og se hvor lenge det er igjen.</p></div>
-      <div class="planner-layout"><div class="planner-note"><span class="note-kicker">THE PLACES WE GO</span><div class="note-illustration"><div class="sun"></div><div class="peak peak-one"></div><div class="peak peak-two"></div></div><div class="note-bottom"><span>DIN REISE STARTER HER</span><span>↗</span></div></div><div class="planner-list"><div class="list-header"><span>PLANLAGTE TURER</span><button class="add-button" id="add-trip" type="button">${icons.plus} Legg til tur</button></div><div id="trip-list"></div><p class="list-footnote">Turene dine lagres lokalt i denne nettleseren.</p></div></div>
+      <div class="planner-layout"><div class="planner-note" style="--journey-image:url('${journeyImage}')"><span class="note-kicker">THE PLACES WE GO</span><div class="note-bottom"><span>DIN REISE STARTER HER</span><span>↗</span></div></div><div class="planner-list"><div class="list-header"><span>PLANLAGTE TURER</span><button class="add-button" id="add-trip" type="button">${icons.plus} Legg til tur</button></div><div id="trip-list"></div><p class="list-footnote">Turene dine lagres lokalt i denne nettleseren.</p></div></div>
     </div></section>
     <section class="closing" id="om"><div class="container closing-inner"><div><span class="eyebrow light">TA MED DEG NYSGJERRIGHETEN</span><h2>Verden venter.<br><em>Begynn her.</em></h2></div><a href="#opplev" class="round-arrow" aria-label="Utforsk steder">${icons.arrowUp}</a></div></section>
   </main>

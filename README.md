@@ -23,4 +23,4 @@ Kjør `npm run build` for å lage produksjonsversjonen i `dist/`. Prosjektet pub
 - [Vite](https://vite.dev/guide/)
 - [date-fns](https://date-fns.org/)
 - [Vites veiledning for GitHub Pages](https://vite.dev/guide/static-deploy)
-- Hovedbildet er laget spesielt for prosjektet med OpenAIs bildegenerator.
+- Alle landskapsbildene er generert spesielt for prosjektet med OpenAIs bildegenerator. De er illustrative og ikke dokumentarfotografier av stedene.
