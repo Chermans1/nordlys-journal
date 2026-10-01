@@ -72,6 +72,7 @@ function destinationCard(place) {
 function renderDestinations() {
   const visible = activeFilter === 'Alle' ? destinations : destinations.filter((place) => place.type === activeFilter)
   document.querySelector('#destination-grid').innerHTML = visible.map(destinationCard).join('')
+  document.querySelector('.filter-count').textContent = `${String(visible.length).padStart(2, '0')} STEDER Å UTFORSKE`
   document.querySelectorAll('[data-filter]').forEach((button) => {
     const active = button.dataset.filter === activeFilter
     button.classList.toggle('active', active)
@@ -134,7 +135,7 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="hero-caption"><span>01 / 06</span><span>LOFOTEN, NORGE<br>68°12′N 13°36′Ø</span></div>
       </div>
-      <div class="hero-side-label">NORDLYS — DIN NESTE REISE STARTER HER</div>
+      <div class="hero-side-label">NORDLYS - DIN NESTE REISE STARTER HER</div>
     </section>
     <section class="intro-strip"><div class="container strip-inner"><div><span class="strip-icon">✳</span><strong>Et lite sted for store opplevelser.</strong></div><p>Utforsk. Planlegg. Reis. Gjenta.</p><a href="#opplev" aria-label="Gå til steder">${icons.arrow}</a></div></section>
     <section class="destinations section-pad" id="opplev"><div class="container">
