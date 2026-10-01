@@ -2,6 +2,8 @@
 
 En responsiv reisedagbok for norske reisemål, bygget med Vite og vanlig JavaScript.
 
+Se siden: https://chermans1.github.io/nordlys-journal/
+
 ## Funksjoner
 
 - Filtrer reisemål etter kyst, fjell og by.
